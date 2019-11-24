@@ -3,7 +3,7 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 50;
+	objectVersion = 51;
 	objects = {
 
 /* Begin PBXBuildFile section */
@@ -14,9 +14,13 @@
 		2C31FA11238255FE0042699F /* Loco3.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 2C31FA0F238255FE0042699F /* Loco3.xcdatamodeld */; };
 		2C31FA13238256040042699F /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 2C31FA12238256040042699F /* Assets.xcassets */; };
 		2C31FA16238256040042699F /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2C31FA14238256040042699F /* LaunchScreen.storyboard */; };
+		2CEBBE74238600860099819A /* iAd.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2CEBBE73238600860099819A /* iAd.framework */; };
+		2CEBBE762386018E0099819A /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2CEBBE752386018E0099819A /* CoreLocation.framework */; };
+		2F964448D0B375F0CC1E3B12 /* Pods_Loco3.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 225230A7782448565FF393AF /* Pods_Loco3.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		225230A7782448565FF393AF /* Pods_Loco3.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Loco3.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		2C31FA03238255FE0042699F /* Loco3.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Loco3.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		2C31FA06238255FE0042699F /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		2C31FA08238255FE0042699F /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -26,6 +30,11 @@
 		2C31FA12238256040042699F /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		2C31FA15238256040042699F /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		2C31FA17238256040042699F /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		2C31FA1D238284BF0042699F /* Loco_ migration .xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = "Loco_ migration .xcdatamodel"; sourceTree = "<group>"; };
+		2CEBBE73238600860099819A /* iAd.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = iAd.framework; path = System/Library/Frameworks/iAd.framework; sourceTree = SDKROOT; };
+		2CEBBE752386018E0099819A /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
+		CB5AD69614E8E5FE476ED03B /* Pods-Loco3.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Loco3.debug.xcconfig"; path = "Target Support Files/Pods-Loco3/Pods-Loco3.debug.xcconfig"; sourceTree = "<group>"; };
+		F9994250AC051A3A57F57AF5 /* Pods-Loco3.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Loco3.release.xcconfig"; path = "Target Support Files/Pods-Loco3/Pods-Loco3.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -33,6 +42,9 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				2CEBBE762386018E0099819A /* CoreLocation.framework in Frameworks */,
+				2CEBBE74238600860099819A /* iAd.framework in Frameworks */,
+				2F964448D0B375F0CC1E3B12 /* Pods_Loco3.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -44,6 +56,8 @@
 			children = (
 				2C31FA05238255FE0042699F /* Loco3 */,
 				2C31FA04238255FE0042699F /* Products */,
+				D5F1A9210BF93032C01D6890 /* Pods */,
+				917AADE810D2B30D10FC00D4 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -70,6 +84,25 @@
 			path = Loco3;
 			sourceTree = "<group>";
 		};
+		917AADE810D2B30D10FC00D4 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				2CEBBE752386018E0099819A /* CoreLocation.framework */,
+				2CEBBE73238600860099819A /* iAd.framework */,
+				225230A7782448565FF393AF /* Pods_Loco3.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		D5F1A9210BF93032C01D6890 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				CB5AD69614E8E5FE476ED03B /* Pods-Loco3.debug.xcconfig */,
+				F9994250AC051A3A57F57AF5 /* Pods-Loco3.release.xcconfig */,
+			);
+			path = Pods;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -77,9 +110,12 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 2C31FA1A238256040042699F /* Build configuration list for PBXNativeTarget "Loco3" */;
 			buildPhases = (
+				F448C09545334EB8DB485850 /* [CP] Check Pods Manifest.lock */,
 				2C31F9FF238255FE0042699F /* Sources */,
 				2C31FA00238255FE0042699F /* Frameworks */,
 				2C31FA01238255FE0042699F /* Resources */,
+				CFC8E13335BC6B0FEC9CC6CD /* [CP] Copy Pods Resources */,
+				CC8D5FFE8CB71A1288EE7599 /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -135,6 +171,65 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		CC8D5FFE8CB71A1288EE7599 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-Loco3/Pods-Loco3-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-Loco3/Pods-Loco3-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-Loco3/Pods-Loco3-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		CFC8E13335BC6B0FEC9CC6CD /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-Loco3/Pods-Loco3-resources-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Copy Pods Resources";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-Loco3/Pods-Loco3-resources-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-Loco3/Pods-Loco3-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		F448C09545334EB8DB485850 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-Loco3-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		2C31F9FF238255FE0042699F /* Sources */ = {
@@ -286,6 +381,7 @@
 		};
 		2C31FA1B238256040042699F /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = CB5AD69614E8E5FE476ED03B /* Pods-Loco3.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
@@ -297,13 +393,14 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = "----.Loco3";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 5.0;
+				SWIFT_VERSION = 4.2;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Debug;
 		};
 		2C31FA1C238256040042699F /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = F9994250AC051A3A57F57AF5 /* Pods-Loco3.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
@@ -315,7 +412,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = "----.Loco3";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 5.0;
+				SWIFT_VERSION = 4.2;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Release;
@@ -347,9 +444,10 @@
 		2C31FA0F238255FE0042699F /* Loco3.xcdatamodeld */ = {
 			isa = XCVersionGroup;
 			children = (
+				2C31FA1D238284BF0042699F /* Loco_ migration .xcdatamodel */,
 				2C31FA10238255FE0042699F /* Loco3.xcdatamodel */,
 			);
-			currentVersion = 2C31FA10238255FE0042699F /* Loco3.xcdatamodel */;
+			currentVersion = 2C31FA1D238284BF0042699F /* Loco_ migration .xcdatamodel */;
 			path = Loco3.xcdatamodeld;
 			sourceTree = "<group>";
 			versionGroupType = wrapper.xcdatamodel;
