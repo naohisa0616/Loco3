@@ -42,36 +42,7 @@ class ViewController: UIViewController, GMSMapViewDelegate, CLLocationManagerDel
             locationManager.startUpdatingLocation()
         }
      }
-//setupLocationManager()メソッド内で、許可ステータスが.authorizedWhenInUseの場合にViewControllerクラスが管理マネージャのデリゲート先になるようにします。
-//     func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
-//         let location = locations.first
-//         let latitude = location?.coordinate.latitude
-//         let longitude = location?.coordinate.longitude
-//
-//         print("latitude: \(latitude!)\nlongitude: \(longitude!)")
-//     }
-    
-//        アプリの使用中に位置情報サービスを使用するユーザーの許可を要求します。
-//        locationManager.requestWhenInUseAuthorization()
-//        locationManager.delegate = self
-//
-////        位置情報サービスを使用するためのアプリの承認ステータスを返します。
-////        戻り値：アプリが位置情報サービスの使用を許可されているかどうかを示す値。
-//        let status = CLLocationManager.authorizationStatus()
-////        authorizedWhenInUse:アプリが使用中のみ位置情報の取得が可能です。
-////        CLLocationManagerのstartUpdatingLocation()メソッドで、位置情報の取得を開始できます。 （stopUpdatingLocation()で停止）
-//        if status == .authorizedWhenInUse {
-//            locationManager.startUpdatingLocation()
-//        }
-//
-//
-//        let camera = GMSCameraPosition.camera(withLatitude: 35.665751, longitude: 139.728687, zoom: 6.0)
-//        let mapView = GMSMapView.map(withFrame: CGRect.zero, camera: camera)
-//        mapView.delegate = self
-//        view = mapView
-    
-   
-    
+
 //    CLLocationCoordinate2D（経緯度）
     func getPlaces(coordinate: CLLocationCoordinate2D) {
 
