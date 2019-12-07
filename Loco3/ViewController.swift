@@ -20,10 +20,10 @@ class ViewController: UIViewController, GMSMapViewDelegate, CLLocationManagerDel
 //    位置情報の機能を管理する'CLLocationManager'クラスのインスタンスlocationManagerをViewControllerクラスのメンバプロパティとして宣言しておく
     var locationManager: CLLocationManager!
 //    GMSMapView インスタンスを生成
-    let camera = GMSCameraPosition.camera(withLatitude: -33.86, longitude: 151.20, zoom: 6.0)
+    let camera = GMSCameraPosition()
     var mapView = GMSMapView(){
         didSet{
-            mapView = GMSMapView.map(withFrame: CGRect.zero, camera: camera)
+            mapView.camera = camera
             mapView.delegate = self
         }
     }
@@ -31,17 +31,17 @@ class ViewController: UIViewController, GMSMapViewDelegate, CLLocationManagerDel
 //    locationManagerオブジェクトの初期化は、setupLocationManager()メソッドを定義して行なっています。
     override func viewDidLoad() {
         super.viewDidLoad()
-       
+       setupLocationManager()
+       setupMapView()
     }
     
-    override func viewDidAppear(_ animated: Bool) {
-         setupLocationManager()
+    private func setupMapView(){
         view = mapView
-        mapView.isMyLocationEnabled = true
         mapView.mapType = .normal
+        mapView.isMyLocationEnabled = true
     }
         
-    func setupLocationManager() {
+    private func setupLocationManager() {
         locationManager = CLLocationManager()
         locationManager.delegate = self
         guard let locationManager = locationManager else { return }
@@ -59,7 +59,7 @@ class ViewController: UIViewController, GMSMapViewDelegate, CLLocationManagerDel
      }
     
 //    CLLocationCoordinate2D（経緯度）
-    func getPlaces(coordinate: CLLocationCoordinate2D) {
+    private func getPlaces(coordinate: CLLocationCoordinate2D) {
 
         let requestURLString = "https://map.yahooapis.jp/search/local/V1/localSearch?cid=d8a23e9e64a4c817227ab09858bc1330&dist=2&query=%E3%82%B3%E3%83%B3%E3%83%93%E3%83%8B&appid=dj00aiZpPURMZ1RFbm94cDVJbyZzPWNvbnN1bWVyc2VjcmV0Jng9NmY-&output=json&sort=geo"
             + "&lat=" + String(coordinate.latitude) + "&lon=" + String(coordinate.longitude)
@@ -84,33 +84,33 @@ class ViewController: UIViewController, GMSMapViewDelegate, CLLocationManagerDel
         }
     }
 
-            func mapView(_ mapView: GMSMapView, didTapInfoWindowOf marker: GMSMarker) {
-                print(marker)
-//                ここでdelegateに返すのか否か
-            }
+    func mapView(_ mapView: GMSMapView, didTapInfoWindowOf marker: GMSMarker) {
+        print(marker)
+    //                ここでdelegateに返すのか否か
+    }
 
-            func locationManager(_ manager: CLLocationManager, didChangeAuthorization status: CLAuthorizationStatus) {
-                if (status == .authorizedWhenInUse) {
-                    // Show dialog to ask user to allow getting location data
-                    locationManager.requestWhenInUseAuthorization()
-                    locationManager.delegate = self
-                }
-            }
+    func locationManager(_ manager: CLLocationManager, didChangeAuthorization status: CLAuthorizationStatus) {
+        if (status == .authorizedWhenInUse) {
+            // Show dialog to ask user to allow getting location data
+            locationManager.requestWhenInUseAuthorization()
+            locationManager.delegate = self
+        }
+    }
 
-            func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
+    func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
 
-                if let location = locations.first {
-                    let latitude = location.coordinate.latitude
-                    let longitude = location.coordinate.longitude
+        if let location = locations.first {
+            let latitude = location.coordinate.latitude
+            let longitude = location.coordinate.longitude
 
-                    print("latitude: \(latitude)\nlongitude: \(longitude)")
+            print("latitude: \(latitude)\nlongitude: \(longitude)")
 
-                    let yourlocation = GMSCameraPosition.camera(withLatitude: latitude,
-                                                                longitude: longitude,
-                                                                zoom: 17)
-                    mapView.camera = yourlocation
+            let yourlocation = GMSCameraPosition.camera(withLatitude: latitude,
+                                                        longitude: longitude,
+                                                        zoom: 17)
+            mapView.camera = yourlocation
 
-//                    getPlaces(coordinate: location.coordinate)
-                }
-            }
+            getPlaces(coordinate: location.coordinate)
+        }
+    }
 }
