@@ -384,15 +384,17 @@
 			baseConfigurationReference = CB5AD69614E8E5FE476ED03B /* Pods-Loco3.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = BAA625SZ4A;
+				DEVELOPMENT_TEAM = ABHGTY2RG2;
 				INFOPLIST_FILE = Loco3/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = "----.Loco3";
+				PRODUCT_BUNDLE_IDENTIFIER = "----.Loco33";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_VERSION = 4.2;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
@@ -404,7 +406,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = BAA625SZ4A;
+				DEVELOPMENT_TEAM = ABHGTY2RG2;
 				INFOPLIST_FILE = Loco3/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",

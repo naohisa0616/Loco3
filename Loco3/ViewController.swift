@@ -20,24 +20,30 @@ class ViewController: UIViewController, GMSMapViewDelegate, CLLocationManagerDel
 //    位置情報の機能を管理する'CLLocationManager'クラスのインスタンスlocationManagerをViewControllerクラスのメンバプロパティとして宣言しておく
     var locationManager: CLLocationManager!
 //    GMSMapView インスタンスを生成
-    var mapView: GMSMapView!
+    let camera = GMSCameraPosition.camera(withLatitude: -33.86, longitude: 151.20, zoom: 6.0)
+    var mapView = GMSMapView(){
+        didSet{
+            mapView = GMSMapView.map(withFrame: CGRect.zero, camera: camera)
+            mapView.delegate = self
+        }
+    }
     
 //    locationManagerオブジェクトの初期化は、setupLocationManager()メソッドを定義して行なっています。
     override func viewDidLoad() {
         super.viewDidLoad()
-        setupLocationManager()
-//        GMSCameraPositionで緯度経度を取得
-        let camera = GMSCameraPosition.camera(withLatitude: 35.665751, longitude: 139.728687, zoom: 6.0)
-//        mapViewのインスタンスを生成
-        let mapView = GMSMapView.map(withFrame: CGRect.zero, camera: camera)
-//        位置情報の変化を受け取ってlocationManager(_ manage, didUpdateLocations locations:) を実行
-        mapView.delegate = self
-//        mapViewを表示
+       
+    }
+    
+    override func viewDidAppear(_ animated: Bool) {
+         setupLocationManager()
         view = mapView
+        mapView.isMyLocationEnabled = true
+        mapView.mapType = .normal
     }
         
     func setupLocationManager() {
         locationManager = CLLocationManager()
+        locationManager.delegate = self
         guard let locationManager = locationManager else { return }
 
         locationManager.requestWhenInUseAuthorization()
@@ -46,7 +52,7 @@ class ViewController: UIViewController, GMSMapViewDelegate, CLLocationManagerDel
         let status = CLLocationManager.authorizationStatus()
 //        管理マネージャが位置情報を更新するペースをdistanceFilterプロパティにメートル単位で設定します。
         if status == .authorizedWhenInUse {
-            locationManager.distanceFilter = 10
+            locationManager.distanceFilter = 1
 //        startUpdatingLocation()メソッドで、位置情報の取得を開始しています。
             locationManager.startUpdatingLocation()
         }
@@ -101,10 +107,10 @@ class ViewController: UIViewController, GMSMapViewDelegate, CLLocationManagerDel
 
                     let yourlocation = GMSCameraPosition.camera(withLatitude: latitude,
                                                                 longitude: longitude,
-                                                                zoom: 15)
+                                                                zoom: 17)
                     mapView.camera = yourlocation
 
-                    getPlaces(coordinate: location.coordinate)
+//                    getPlaces(coordinate: location.coordinate)
                 }
             }
 }
