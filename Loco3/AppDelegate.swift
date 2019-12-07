@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import GooglePlaces
 import GoogleMaps
 import CoreData
 
@@ -18,6 +19,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         // Override point for customization after application launch.
         
+        GMSPlacesClient.provideAPIKey("AIzaSyC8zCvYYunqj3wHvKK2kbzvA-zEq82l1hQ")
         GMSServices.provideAPIKey("AIzaSyC8zCvYYunqj3wHvKK2kbzvA-zEq82l1hQ")
         
         return true
@@ -38,7 +40,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     }
 
     // MARK: - Core Data stack
-
+//NSPersistentContainer型として、persistentContainer変数にcontainerをオブジェクト化して代入
     lazy var persistentContainer: NSPersistentContainer = {
         /*
          The persistent container for the application. This implementation
@@ -69,13 +71,15 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     // MARK: - Core Data Saving support
 
     func saveContext () {
+        //NSPersistentContainer内のNSManagedObjectContextを定数contextに代入
         let context = persistentContainer.viewContext
+        //NSManagedObjectContextに変更があったら、保存しますよ
         if context.hasChanges {
             do {
+                //NSManagedObjectContextの内容を保存するよ
                 try context.save()
             } catch {
-                // Replace this implementation with code to handle the error appropriately.
-                // fatalError() causes the application to generate a crash log and terminate. You should not use this function in a shipping application, although it may be useful during development.
+        //なんかエラーがあったらエラーを吐くよ
                 let nserror = error as NSError
                 fatalError("Unresolved error \(nserror), \(nserror.userInfo)")
             }

@@ -12,6 +12,7 @@ import GoogleMaps
 import Alamofire
 import SwiftyJSON
 import CoreLocation
+import GooglePlaces
 
 //CLLocationManagerDelegateプロトコルを採用
 class ViewController: UIViewController, GMSMapViewDelegate, CLLocationManagerDelegate {
@@ -20,11 +21,19 @@ class ViewController: UIViewController, GMSMapViewDelegate, CLLocationManagerDel
     var locationManager: CLLocationManager!
 //    GMSMapView インスタンスを生成
     var mapView: GMSMapView!
-
+    
 //    locationManagerオブジェクトの初期化は、setupLocationManager()メソッドを定義して行なっています。
     override func viewDidLoad() {
         super.viewDidLoad()
         setupLocationManager()
+//        GMSCameraPositionで緯度経度を取得
+        let camera = GMSCameraPosition.camera(withLatitude: 35.665751, longitude: 139.728687, zoom: 6.0)
+//        mapViewのインスタンスを生成
+        let mapView = GMSMapView.map(withFrame: CGRect.zero, camera: camera)
+//        位置情報の変化を受け取ってlocationManager(_ manage, didUpdateLocations locations:) を実行
+        mapView.delegate = self
+//        mapViewを表示
+        view = mapView
     }
         
     func setupLocationManager() {
@@ -34,15 +43,15 @@ class ViewController: UIViewController, GMSMapViewDelegate, CLLocationManagerDel
         locationManager.requestWhenInUseAuthorization()
 
 //        ユーザから「アプリ使用中の位置情報取得」の許可が得られた場合のみ、マネージャの設定を行います。
-//        管理マネージャが位置情報を更新するペースをdistanceFilterプロパティにメートル単位で設定します。
-//        startUpdatingLocation()メソッドで、位置情報の取得を開始しています。
         let status = CLLocationManager.authorizationStatus()
+//        管理マネージャが位置情報を更新するペースをdistanceFilterプロパティにメートル単位で設定します。
         if status == .authorizedWhenInUse {
             locationManager.distanceFilter = 10
+//        startUpdatingLocation()メソッドで、位置情報の取得を開始しています。
             locationManager.startUpdatingLocation()
         }
      }
-
+    
 //    CLLocationCoordinate2D（経緯度）
     func getPlaces(coordinate: CLLocationCoordinate2D) {
 
@@ -71,12 +80,14 @@ class ViewController: UIViewController, GMSMapViewDelegate, CLLocationManagerDel
 
             func mapView(_ mapView: GMSMapView, didTapInfoWindowOf marker: GMSMarker) {
                 print(marker)
+//                ここでdelegateに返すのか否か
             }
 
             func locationManager(_ manager: CLLocationManager, didChangeAuthorization status: CLAuthorizationStatus) {
                 if (status == .authorizedWhenInUse) {
                     // Show dialog to ask user to allow getting location data
                     locationManager.requestWhenInUseAuthorization()
+                    locationManager.delegate = self
                 }
             }
 
