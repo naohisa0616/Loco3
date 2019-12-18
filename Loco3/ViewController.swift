@@ -14,21 +14,23 @@ import SwiftyJSON
 import CoreLocation
 import GooglePlaces
 
-//CLLocationManagerDelegateプロトコルを採用
+//①CLLocationManagerDelegateプロトコルの採用を宣言する（クラスが必ず実装しなければならないプロパティやメソッド）
 class ViewController: UIViewController, GMSMapViewDelegate, CLLocationManagerDelegate {
     
 //    位置情報の機能を管理する'CLLocationManager'クラスのインスタンスlocationManagerをViewControllerクラスのメンバプロパティとして宣言しておく
     var locationManager: CLLocationManager!
-//    GMSMapView インスタンスを生成
+//    GMSCameraPositionのインスタンスcameraを作る
     let camera = GMSCameraPosition()
+//  GMSMapView インスタンスmapViewを作る    
     var mapView = GMSMapView(){
+//    プロパティを監視するdidSet（プロパティが更新されると呼ばれる）        
         didSet{
             mapView.camera = camera
             mapView.delegate = self
         }
     }
     
-//    locationManagerオブジェクトの初期化は、setupLocationManager()メソッドを定義して行なっています。
+//    locationManagerオブジェクトの初期化は、setupLocationManager()メソッドを定義して行なっています。（下のメソッドがここに来て、処理を行う？）
     override func viewDidLoad() {
         super.viewDidLoad()
        setupLocationManager()
@@ -43,6 +45,7 @@ class ViewController: UIViewController, GMSMapViewDelegate, CLLocationManagerDel
         
     private func setupLocationManager() {
         locationManager = CLLocationManager()
+//    ②locationManagerのデリゲート（イベント処理を代理したいテキストフィールドの外注先）になる
         locationManager.delegate = self
         guard let locationManager = locationManager else { return }
 
@@ -93,14 +96,17 @@ class ViewController: UIViewController, GMSMapViewDelegate, CLLocationManagerDel
         if (status == .authorizedWhenInUse) {
             // Show dialog to ask user to allow getting location data
             locationManager.requestWhenInUseAuthorization()
+            //locationManagerのデリゲートになる
             locationManager.delegate = self
         }
     }
-
+//locationManager:didUpdateLocationsデリゲートメソッドで位置情報を受け取る
     func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
-
+//      .firstで配列の先頭を取得する?
         if let location = locations.first {
+            //緯度を取得
             let latitude = location.coordinate.latitude
+            //経度を取得
             let longitude = location.coordinate.longitude
 
             print("latitude: \(latitude)\nlongitude: \(longitude)")
