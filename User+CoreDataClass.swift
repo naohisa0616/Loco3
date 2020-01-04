@@ -13,3 +13,8 @@ import CoreData
 public class User: NSManagedObject {
 
 }
+
+@objc(GMSCacheProperty)
+class GMSCacheProperty {
+
+}
