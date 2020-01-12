@@ -1,11 +1,9 @@
-//
 //  ViewController.swift
 //  Loco3
 //
 //  Created by 宮崎直久 on 2019/11/18.
 //  Copyright © 2019 宮崎直久. All rights reserved.
 //
-
 import UIKit
 import CoreData
 import GoogleMaps
@@ -14,23 +12,21 @@ import SwiftyJSON
 import CoreLocation
 import GooglePlaces
 
-//①CLLocationManagerDelegateプロトコルの採用を宣言する（クラスが必ず実装しなければならないプロパティやメソッド）
+//CLLocationManagerDelegateプロトコルを採用
 class ViewController: UIViewController, GMSMapViewDelegate, CLLocationManagerDelegate {
     
 //    位置情報の機能を管理する'CLLocationManager'クラスのインスタンスlocationManagerをViewControllerクラスのメンバプロパティとして宣言しておく
     var locationManager: CLLocationManager!
-//    GMSCameraPositionのインスタンスcameraを作る
+//    GMSMapView インスタンスを生成
     let camera = GMSCameraPosition()
-//  GMSMapView インスタンスmapViewを作る    
     var mapView = GMSMapView(){
-//    プロパティを監視するdidSet（プロパティが更新されると呼ばれる）        
         didSet{
             mapView.camera = camera
             mapView.delegate = self
         }
     }
     
-//    locationManagerオブジェクトの初期化は、setupLocationManager()メソッドを定義して行なっています。（下のメソッドがここに来て、処理を行う？）
+//    locationManagerオブジェクトの初期化は、setupLocationManager()メソッドを定義して行なっています。
     override func viewDidLoad() {
         super.viewDidLoad()
        setupLocationManager()
@@ -45,7 +41,6 @@ class ViewController: UIViewController, GMSMapViewDelegate, CLLocationManagerDel
         
     private func setupLocationManager() {
         locationManager = CLLocationManager()
-//    ②locationManagerのデリゲート（イベント処理を代理したいテキストフィールドの外注先）になる
         locationManager.delegate = self
         guard let locationManager = locationManager else { return }
 
@@ -64,7 +59,7 @@ class ViewController: UIViewController, GMSMapViewDelegate, CLLocationManagerDel
 //    CLLocationCoordinate2D（経緯度）
     private func getPlaces(coordinate: CLLocationCoordinate2D) {
 
-        let requestURLString = "https://map.yahooapis.jp/search/local/V1/localSearch?cid=d8a23e9e64a4c817227ab09858bc1330&dist=2&query=%E3%82%B3%E3%83%B3%E3%83%93%E3%83%8B&appid=dj00aiZpPURMZ1RFbm94cDVJbyZzPWNvbnN1bWVyc2VjcmV0Jng9NmY-&output=json&sort=geo"
+        let requestURLString = "https://map.yahooapis.jp/search/local/V1/localSearch?cid=d8a23e9e64a4c817227ab09858bc1330&dist=2&query=%E3%83%A9%E3%83%BC%E3%83%A1%E3%83%B3&appid=dj00aiZpPURMZ1RFbm94cDVJbyZzPWNvbnN1bWVyc2VjcmV0Jng9NmY-&output=json&sort=geo"
             + "&lat=" + String(coordinate.latitude) + "&lon=" + String(coordinate.longitude)
         Alamofire.request(requestURLString).responseJSON { response in
 
@@ -100,7 +95,8 @@ class ViewController: UIViewController, GMSMapViewDelegate, CLLocationManagerDel
             locationManager.delegate = self
         }
     }
-//locationManager:didUpdateLocationsデリゲートメソッドで位置情報を受け取る
+  
+    //locationManager:didUpdateLocationsデリゲートメソッドで位置情報を受け取る
     func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
 //      .firstで配列の先頭を取得する?
         if let location = locations.first {
