@@ -15,7 +15,7 @@ import GooglePlaces
 //CLLocationManagerDelegateプロトコルを採用
 class ViewController: UIViewController, GMSMapViewDelegate, CLLocationManagerDelegate {
     
-        //緯度を取得
+    //緯度を取得
     //ここをクラス変数にして、「MAPのどこかをタップした時はその場所にカメラを移動し、追跡をOFFに」で緯度、経度を変更できるようにする。
     //    let latitude = location.coordinate.latitude
     let latitude:Double! = 0
